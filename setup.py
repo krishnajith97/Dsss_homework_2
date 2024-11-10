@@ -1,5 +1,3 @@
-# Create setup.py in root directory
-# Create new file named 'setup.py' and paste this content:
 from setuptools import setup, find_packages
 
 setup(
@@ -14,14 +12,12 @@ setup(
             'math_quiz=math_quiz.math_quiz:math_quiz'
         ],
     },
-    author="Krishnajith Gokul",
+    author="Krishnajith",
     author_email="krishnajithgokul@gmail.com",
-    description="Math quiz game",
-    license="Apache License 2.0",
-    keywords="math quiz game education",
-    url="https://github.com/yourusername/dsss_homework_2",
+    description="Simple math quiz game",
     python_requires='>=3.6',
 )
+
 
 
 

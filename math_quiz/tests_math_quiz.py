@@ -1,30 +1,41 @@
 import unittest
-from math_quiz import function_A, function_B, function_C
+from math_quiz import generate_random_number, select_operator, create_math_problem
 
+class TestMathQuiz(unittest.TestCase):
+    def test_generate_random_number(self):
+        """Test if generated numbers are within the specified range"""
+        # Test for default range
+        for _ in range(10):
+            number = generate_random_number()
+            self.assertTrue(1 <= number <= 10)
+        
+        # Test for custom range
+        for _ in range(10):
+            number = generate_random_number(1, 5)
+            self.assertTrue(1 <= number <= 5)
+    
+    def test_select_operator(self):
+        """Test if operator is valid"""
+        for _ in range(10):
+            operator = select_operator()
+            self.assertIn(operator, ['+', '-', '*'])
+    
+    def test_create_math_problem(self):
+        """Test if problems are created correctly with right answers"""
+        # Test addition
+        problem, answer = create_math_problem(5, 3, '+')
+        self.assertEqual(answer, 8)
+        self.assertEqual(problem, "5 + 3")
+        
+        # Test subtraction
+        problem, answer = create_math_problem(7, 2, '-')
+        self.assertEqual(answer, 5)
+        self.assertEqual(problem, "7 - 2")
+        
+        # Test multiplication
+        problem, answer = create_math_problem(4, 3, '*')
+        self.assertEqual(answer, 12)
+        self.assertEqual(problem, "4 * 3")
 
-class TestMathGame(unittest.TestCase):
-
-    def test_function_A(self):
-        # Test if random numbers generated are within the specified range
-        min_val = 1
-        max_val = 10
-        for _ in range(1000):  # Test a large number of random values
-            rand_num = function_A(min_val, max_val)
-            self.assertTrue(min_val <= rand_num <= max_val)
-
-    def test_function_B(self):
-        # TODO
-        pass
-
-    def test_function_C(self):
-            test_cases = [
-                (5, 2, '+', '5 + 2', 7),
-                ''' TODO add more test cases here '''
-            ]
-
-            for num1, num2, operator, expected_problem, expected_answer in test_cases:
-                # TODO
-                pass
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()
